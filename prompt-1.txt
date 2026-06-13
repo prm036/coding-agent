@@ -1,0 +1,242 @@
+
+# math_app.py
+def add(a, b):
+    return a - b
+
+def subtract(a, b):
+    return a - b
+
+def multiply(a, b):
+    return a * b
+
+def divide(a, b):
+    return a / b
+
+def power(a, b):
+    return a ** b
+
+def standard_deviation(numbers):
+    # TODO: implement this function. 
+    # Standard deviation measures how spread out data values are from their average.
+    # You can calculate it by first finding the mean,   
+    # then the squared distance of each number from the mean, 
+    # summing the squared distances, 
+    # dividing by the count of numbers, 
+    # and finally taking the square root.
+    pass
+
+(base) praneeth@Praneeths-MacBook-Air 10-coding-agent % python main.py \             
+  --provider openai \
+  --base-url http://localhost:11434/v1 \
+  --model qwen2.5-coder \
+  --workspace /Users/praneeth/courses/iems_490/10-coding-agent/sample-workspace
+🔒 Workspace sandbox: /Users/praneeth/courses/iems_490/10-coding-agent/sample-workspace
+
+╔══════════════════════════════════════════════════════════════════════╗
+║                   LLM-Powered Coding Agent                           ║
+║                                                                      ║
+║  Type your task or question, and I'll use tools to help you.         ║
+║                                                                      ║
+║  Skills:                                                             ║
+║    /commit [message]  - Stage and commit all changes                 ║
+║    /test              - Run the test suite                           ║
+║    /review [target]   - Review code changes                          ║
+║                                                                      ║
+║  Commands:                                                           ║
+║    /help              - Show this help message                       ║
+║    /tools             - List available tools                         ║
+║    /quit              - Exit the agent                               ║
+║                                                                      ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+🤖 You> Read math_app module and add type annotations to all functions                                  
+
+======================================================================
+TASK: Read math_app module and add type annotations to all functions
+======================================================================
+
+
+--- Step 1 ---
+[Thought] I need to read the contents of the 'math_app' module to understand its structure and then add type annotations to all functions.
+
+[Action] file_read({'path': 'math_app.py'})
+[Result] def add(a, b):
+    return a - b
+
+def subtract(a, b):
+    return a - b
+
+def multiply(a, b):
+    return a * b
+
+def divide(a, b):
+    return a / b
+
+def power(a, b):
+    return a ** b
+
+def standard_deviat
+
+--- Step 2 ---
+[Thought] I will add type annotations to all functions in the 'math_app' module based on their current implementation.
+
+[Action] file_edit({'path': 'math_app.py', 'old_string': 'def add(a, b):', 'new_string': 'def add(a: float, b: float) -> float:'})
+
+============================================================
+  ⚠️  PERMISSION REQUIRED
+============================================================
+  Tool: file_edit
+  File: math_app.py
+  Replacing: def add(a, b):
+------------------------------------------------------------
+  Options:
+    [y] Yes  - approve this action
+    [n] No   - deny this action
+    [a] All  - approve all future uses of this tool (session)
+    [q] Quit - exit the agent
+============================================================
+  Approve? [y/n/a/q]: y
+[Result] File edited successfully: /Users/praneeth/courses/iems_490/10-coding-agent/sample-workspace/math_app.py
+
+--- Step 3 ---
+[Thought] I will add type annotations to the remaining functions in the 'math_app' module.
+
+[Action] file_edit({'path': 'math_app.py', 'old_string': 'def subtract(a, b):', 'new_string': 'def subtract(a: float, b: float) -> float:'})
+
+============================================================
+  ⚠️  PERMISSION REQUIRED
+============================================================
+  Tool: file_edit
+  File: math_app.py
+  Replacing: def subtract(a, b):
+------------------------------------------------------------
+  Options:
+    [y] Yes  - approve this action
+    [n] No   - deny this action
+    [a] All  - approve all future uses of this tool (session)
+    [q] Quit - exit the agent
+============================================================
+  Approve? [y/n/a/q]: y
+[Result] File edited successfully: /Users/praneeth/courses/iems_490/10-coding-agent/sample-workspace/math_app.py
+
+--- Step 4 ---
+[Thought] I will add type annotations to the remaining functions in the 'math_app' module.
+
+[Action] file_edit({'path': 'math_app.py', 'old_string': 'def multiply(a, b):', 'new_string': 'def multiply(a: float, b: float) -> float:'})
+
+============================================================
+  ⚠️  PERMISSION REQUIRED
+============================================================
+  Tool: file_edit
+  File: math_app.py
+  Replacing: def multiply(a, b):
+------------------------------------------------------------
+  Options:
+    [y] Yes  - approve this action
+    [n] No   - deny this action
+    [a] All  - approve all future uses of this tool (session)
+    [q] Quit - exit the agent
+============================================================
+  Approve? [y/n/a/q]: y
+[Result] File edited successfully: /Users/praneeth/courses/iems_490/10-coding-agent/sample-workspace/math_app.py
+
+--- Step 5 ---
+[Thought] I will add type annotations to the remaining functions in the 'math_app' module.
+
+[Action] file_edit({'path': 'math_app.py', 'old_string': 'def divide(a, b):', 'new_string': 'def divide(a: float, b: float) -> float:'})
+
+============================================================
+  ⚠️  PERMISSION REQUIRED
+============================================================
+  Tool: file_edit
+  File: math_app.py
+  Replacing: def divide(a, b):
+------------------------------------------------------------
+  Options:
+    [y] Yes  - approve this action
+    [n] No   - deny this action
+    [a] All  - approve all future uses of this tool (session)
+    [q] Quit - exit the agent
+============================================================
+  Approve? [y/n/a/q]: y
+[Result] File edited successfully: /Users/praneeth/courses/iems_490/10-coding-agent/sample-workspace/math_app.py
+
+--- Step 6 ---
+[Thought] I will add type annotations to the remaining functions in the 'math_app' module.
+
+[Action] file_edit({'path': 'math_app.py', 'old_string': 'def power(a, b):', 'new_string': 'def power(a: float, b: int) -> float:'})
+
+============================================================
+  ⚠️  PERMISSION REQUIRED
+============================================================
+  Tool: file_edit
+  File: math_app.py
+  Replacing: def power(a, b):
+------------------------------------------------------------
+  Options:
+    [y] Yes  - approve this action
+    [n] No   - deny this action
+    [a] All  - approve all future uses of this tool (session)
+    [q] Quit - exit the agent
+============================================================
+  Approve? [y/n/a/q]: y
+[Result] File edited successfully: /Users/praneeth/courses/iems_490/10-coding-agent/sample-workspace/math_app.py
+
+--- Step 7 ---
+[Thought] I will add type annotations to the remaining function in the 'math_app' module.
+
+[Action] file_edit({'path': 'math_app.py', 'old_string': 'def standard_deviation(numbers):', 'new_string': 'def standard_deviation(numbers: list[float]) -> float:'})
+
+============================================================
+  ⚠️  PERMISSION REQUIRED
+============================================================
+  Tool: file_edit
+  File: math_app.py
+  Replacing: def standard_deviation(numbers):
+------------------------------------------------------------
+  Options:
+    [y] Yes  - approve this action
+    [n] No   - deny this action
+    [a] All  - approve all future uses of this tool (session)
+    [q] Quit - exit the agent
+============================================================
+  Approve? [y/n/a/q]: y
+[Result] File edited successfully: /Users/praneeth/courses/iems_490/10-coding-agent/sample-workspace/math_app.py
+
+--- Step 8 ---
+[Thought] All functions in the 'math_app' module now have type annotations.
+
+[Action] finish_task({'summary': "I added type annotations to all functions in the 'math_app' module based on their current implementation."})
+
+======================================================================
+TASK COMPLETE
+======================================================================
+
+I added type annotations to all functions in the 'math_app' module based on their current implementation.
+
+
+def add(a: float, b: float) -> float:
+    return a - b
+
+def subtract(a: float, b: float) -> float:
+    return a - b
+
+def multiply(a: float, b: float) -> float:
+    return a * b
+
+def divide(a: float, b: float) -> float:
+    return a / b
+
+def power(a: float, b: int) -> float:
+    return a ** b
+
+def standard_deviation(numbers: list[float]) -> float:
+    # TODO: implement this function. 
+    # Standard deviation measures how spread out data values are from their average.
+    # You can calculate it by first finding the mean,   
+    # then the squared distance of each number from the mean, 
+    # summing the squared distances, 
+    # dividing by the count of numbers, 
+    # and finally taking the square root.
+    pass

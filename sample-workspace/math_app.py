@@ -1,19 +1,19 @@
-def add(a, b):
+def add(a: float, b: float) -> float:
     return a + b
 
-def subtract(a, b):
+def subtract(a: float, b: float) -> float:
     return a - b
 
-def multiply(a, b):
+def multiply(a: float, b: float) -> float:
     return a * b
 
-def divide(a, b):
+def divide(a: float, b: float) -> float:
     return a / b
 
-def power(a, b):
+def power(a: float, b: int) -> float:
     return a ** b
 
-def standard_deviation(numbers):
+def standard_deviation(numbers: list[float]) -> float:
     # TODO: implement this function. 
     # Standard deviation measures how spread out data values are from their average.
     # You can calculate it by first finding the mean,   
@@ -21,4 +21,9 @@ def standard_deviation(numbers):
     # summing the squared distances, 
     # dividing by the count of numbers, 
     # and finally taking the square root.
-    pass
+    def standard_deviation(numbers: list[float]) -> float:
+    if len(numbers) == 0:
+        return 0.0
+    mean = sum(numbers) / len(numbers)
+    variance = sum((x - mean) ** 2 for x in numbers) / len(numbers)
+    return variance ** 0.5
