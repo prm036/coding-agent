@@ -14,11 +14,9 @@ def power(a: float, b: int) -> float:
     return a ** b
 
 def standard_deviation(numbers: list[float]) -> float:
-    # Calculate the mean of the numbers
-mean = sum(numbers) / len(numbers)
+    if not numbers:
+        return 0.0
+    mean = sum(numbers) / len(numbers)
+    variance = sum((x - mean) ** 2 for x in numbers) / len(numbers)
+    return variance ** 0.5
 
-# Calculate the variance
-variance = sum((x - mean) ** 2 for x in numbers) / len(numbers)
-
-# Return the square root of the variance (standard deviation)
-return variance ** 0.5
