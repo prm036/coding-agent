@@ -14,17 +14,17 @@ A modular, extensible coding agent that combines an LLM backbone with a tool har
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│                   User Input                         │
+│                   User Input                        │
 └───────────────────┬─────────────────────────────────┘
                     │
 ┌───────────────────▼─────────────────────────────────┐
-│               Agent Loop (OODA)                      │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐          │
-│  │ Observe  │─▶│  Think   │─▶│   Act    │          │
-│  │          │  │  (LLM)   │  │ (Tools)  │          │
-│  └──────────┘  └──────────┘  └────┬─────┘          │
-│         ▲                         │                │
-│         └──────── Check ◀─────────┘                │
+│               Agent Loop (OODA)                     │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐           │
+│  │ Observe  │─▶│  Think   │─▶│   Act    │           │
+│  │          │  │  (LLM)   │  │ (Tools)  │           │
+│  └──────────┘  └──────────┘  └────┬─────┘           │
+│         ▲                         │                 │
+│         └──────── Check ◀─────────┘                 │
 └─────────────────────────────────────────────────────┘
                     │
     ┌───────────────┼───────────────┐
@@ -32,9 +32,9 @@ A modular, extensible coding agent that combines an LLM backbone with a tool har
 ┌─────────┐  ┌──────────┐  ┌────────────┐
 │  Tools  │  │  Skills  │  │  Safety    │
 │         │  │          │  │  (Perms)   │
-│• read   │  │• commit │  │            │
-│• write  │  │• test   │  │ Confirm    │
-│• shell  │  │• review │  │ dangerous  │
+│• read   │  │• commit  │  │            │
+│• write  │  │• test    │  │ Confirm    │
+│• shell  │  │• review  │  │ dangerous  │
 │• search │  │          │  │ actions    │
 │• git    │  │          │  │            │
 └─────────┘  └──────────┘  └────────────┘
@@ -129,9 +129,6 @@ You can run the agent completely free without API credits by using a local model
 ```bash
 python main.py --base-url http://localhost:11434/v1 --model qwen2.5-coder:7b "Find all TODOs in the codebase"
 ```
-```
-
-
 
 ## Tools
 
@@ -213,6 +210,17 @@ Execute git commands. **Dangerous** for write operations.
 }
 ```
 
+### finish_task
+Call this tool to cleanly exit the agent loop once the user's task is fully complete.
+```json
+{
+  "action": "finish_task",
+  "arguments": {
+    "summary": "Detailed summary of what was accomplished."
+  }
+}
+```
+
 ## Skills
 
 Skills are higher-level workflows invoked with `/` commands:
@@ -257,7 +265,7 @@ Actions are classified as **safe** or **dangerous** based on the tool and its ar
 
 | Classification | Tools | Details |
 |---|---|---|
-| **Safe** (no confirmation) | `file_read`, `search` | Read-only operations |
+| **Safe** (no confirmation) | `file_read`, `search`, `finish_task` | Read-only operations and loop exit |
 | **Always dangerous** | `file_write`, `file_edit` | Any write/edit requires confirmation |
 | **Argument-dependent** | `shell_execute` | Safe prefixes (`ls`, `cat`, `grep`, `pytest`, etc.) pass through; everything else requires confirmation |
 | **Argument-dependent** | `git` | Read-only commands (`status`, `diff`, `log`) are safe; mutating commands (`push`, `commit`, `reset --hard`) are dangerous |
@@ -310,6 +318,7 @@ coding-agent/
 │   │   ├── file_write.py
 │   │   ├── shell.py
 │   │   ├── search.py
+│   │   ├── finish.py        # Task completion tool
 │   │   └── git_tool.py
 │   ├── skills/              # Skill implementations
 │   │   ├── __init__.py
@@ -434,7 +443,3 @@ You can also inspect the `agent.action_log` list programmatically for full execu
 - Shell commands are sandboxed by the OS permissions
 - LLM context window limits how much code can be processed at once
 - Complex multi-file refactoring may require multiple iterations
-
-## License
-
-This project is for educational purposes (IEMS 490 - Foundations of Large Language Models).
