@@ -11,12 +11,15 @@ class TestTrie(unittest.TestCase):
         self.trie.insert('apple')
         self.assertTrue(self.trie.search('apple'))
 
-    def test_search_prefix(self):
-        self.trie.insert('apples')
-        self.assertTrue(self.trie.startsWith('app'))
+    def test_search(self):
+        self.trie.insert('banana')
+        self.assertTrue(self.trie.search('banana'))
+        self.assertFalse(self.trie.search('apples'))
 
-    def test_not_found(self):
-        self.assertFalse(self.trie.search('banana'))
+    def test_startsWith(self):
+        self.trie.insert('cherry')
+        self.assertTrue(self.trie.startsWith('che'))
+        self.assertFalse(self.trie.startsWith('cherries'))
 
 if __name__ == '__main__':
     unittest.main()
