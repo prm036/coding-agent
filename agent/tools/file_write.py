@@ -162,9 +162,30 @@ class FileEditTool(Tool):
             with open(path, 'w', encoding='utf-8') as f:
                 f.write(new_content)
 
+            # Generate a snippet to show the agent the result of its edit
+            snippet = ""
+            start_idx = new_content.find(new_string)
+            if start_idx != -1:
+                lines = new_content.split('\n')
+                line_num = new_content.count('\n', 0, start_idx)
+                
+                start_line = max(0, line_num - 3)
+                new_str_lines = new_string.count('\n')
+                end_line = min(len(lines), line_num + new_str_lines + 4)
+                
+                snippet_lines = []
+                for i in range(start_line, end_line):
+                    prefix = ">> " if line_num <= i <= (line_num + new_str_lines) else "   "
+                    snippet_lines.append(f"{i+1:3d} | {prefix}{lines[i]}")
+                snippet = "\n" + "\n".join(snippet_lines)
+
+            result_msg = f"File edited successfully: {os.path.abspath(path)}"
+            if snippet:
+                result_msg += f"\n\nSnippet around edit:{snippet}"
+
             return {
                 "success": True,
-                "result": f"File edited successfully: {os.path.abspath(path)}",
+                "result": result_msg,
                 "metadata": {
                     "path": os.path.abspath(path),
                     "backup": backup_path,
